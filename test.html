@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test-Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <span>span</span>
+      <input v-model="num" />
+      <ul class="ul-box" v-on:click="handleClick">
+        <li>123</li>
+        <li>456</li>
+        <li>{{age}}</li>
+      </ul>
+    </div>
+  </body>
+
+  <script type="module">
+    import Vue from './index.js';
+    // import parse from './compiler2x/parse.js';
+    // import compileToFunction from './compiler2x/compileToFunction.js';
+    const app = document.querySelector('#app');
+    // console.log(parse(app.outerHTML));
+    new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          age: 777,
+          num: 999,
+        };
+      },
+      methods: {
+        handleClick() {
+          console.log(' this', this);
+
+          this._data.age = Math.random();
+        },
+      },
+    });
+  </script>
+</html>
